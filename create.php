@@ -66,9 +66,9 @@
         $temp['uid'] = $uid;  
         $temp['pwd'] = $hashedpwd;
         if ($uid == 'admin')
-            $temp['priv'] = 1;
+            $temp['priv'] = true;
         else
-            $temp['priv'] = 0;
+            $temp['priv'] = false;
         $logins[] = $temp;
         $logins = serialize($logins);
         file_put_contents('../data/passwd', $logins);

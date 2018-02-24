@@ -11,10 +11,11 @@
                 echo "Hello " . $_SESSION['first'] . ", you are logged in!\n";
                 echo ('<br><br>');
                 //Display different pages based on user privileges
-                if ($_SESSION['priv'] == 1)
+                if ($_SESSION['priv'] === true)
                 {
                     echo '<a href=manageinv.php>Manage Inventory</a>';
                     echo '<a href=manageusers.php>Manage Users</a>';
+                    print_r($_SESSION);
                 }
                 else
                 {

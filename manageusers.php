@@ -1,5 +1,10 @@
 <?php
     include_once('header.php');
+    if ($_SESSION['priv'] === false)
+    {
+        header("Location: index.php?access=denied");
+        exit();
+    }
 ?>
 
 <section class"main-container">

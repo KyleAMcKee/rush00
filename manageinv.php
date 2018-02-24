@@ -1,5 +1,10 @@
 <?php
     include_once('header.php');
+    if ($_SESSION['priv'] === false)
+    {
+        header("Location: index.php?access=denied");
+        exit();
+    }
 ?>
 
 <section class"main-container">
@@ -17,6 +22,8 @@
         <table>
         <?php
         $items = unserialize(file_get_contents('../data/products'));
+        if ($items)
+        {
         foreach($items as $row) {
             echo('<tr>');
             echo('<td>');
@@ -24,6 +31,7 @@
             echo('</td>');
             echo('</tr>');
         } 
+    }
         ?>
     </table>
     </div>
