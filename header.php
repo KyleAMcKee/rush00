@@ -32,6 +32,9 @@
                             </form>
                             <a href="signup.php">Sign up</a>';
                     }
+                    echo '<form method="POST" action="cart.php">
+                            <button type="submit" name="submit">Cart</button>
+                            </form>';
                 ?>
             </div>
         </div>

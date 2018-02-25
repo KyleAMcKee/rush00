@@ -19,18 +19,13 @@
                 }
                 else
                 {
-                    $items = unserialize(file_get_contents('../data/products'));
-                    foreach($items as $row) {
-                        echo('<tr>');
-                        echo('<td>');
-                        echo(implode('</td><td>', $row));
-                        echo('<br>');
-                        echo('</td>');
-                        echo('</tr>');
-                    }
+                    include_once('productlist.php');
                 }
             }
-        
+            else
+            {
+                include_once('productlist.php');
+            }
         ?>
     </div>
 </section>
