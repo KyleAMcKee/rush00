@@ -15,6 +15,7 @@
             <input type="number" min='0' step='0.01' name="price" placeholder="Price">
             <input type="number" min='0' name="stock" placeholder="Quantity">
             <input type="text" name="desc" placeholder="Description">
+            <input type="text" name="category" placeholder="Category1, Category2...">
             <input type="url" name="image" placeholder="Image URL">
             <button type="submit" name="submit" value="add">Add</button>
             <button type="submit" name="submit" value="delete">Delete</button>

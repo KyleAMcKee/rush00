@@ -40,10 +40,14 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'add')
     
     if (!$_POST['image'])
         $_POST['image'] = "42.png";
+    if (!$_POST['category'])
+    	$_POST['category'] = "all";
     $product = $_POST['name'];
     $price = $_POST['price'];
     $stock = $_POST['stock'];
     $desc = $_POST['desc'];
+    $category = trim(preg_replace("/[ ,]+/", ",", $_POST['category']));
+    $category = explode(",", $category);
     $url = $_POST['image'];
 
     //Check if product exists in database
@@ -70,6 +74,7 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'add')
     $temp['price'] = $price;
     $temp['stock'] = $stock;
     $temp['desc'] = $desc;
+    $temp['category'] = $category;
     $temp['image'] = $url;     //use getimagesize() to validate it contains an image?
     $products[] = $temp;
     $products = serialize($products);
@@ -123,11 +128,15 @@ else if (isset($_POST['submit']) && $_POST['submit'] == 'modify')
     
     if (!$_POST['image'])
         $_POST['image'] = "42.png";
+    if (!$_POST['category'])
+    	$_POST['category'] = "all";
 
     $product = $_POST['name'];
     $price = $_POST['price'];
     $stock = $_POST['stock'];
     $desc = $_POST['desc'];
+    $category = trim(preg_replace("/[ ,]+/", ",", $_POST['category']));
+    $category = explode(",", $category);
     $url = $_POST['image'];
 
      //Check if product exists in database
@@ -156,6 +165,7 @@ else if (isset($_POST['submit']) && $_POST['submit'] == 'modify')
     $products[$item_found]['price'] = $price;
     $products[$item_found]['stock'] = $stock;
     $products[$item_found]['desc'] = $desc;
+    $products[$item_found]['category'] = $category;
     $products[$item_found]['image'] = $url;
 
     $products = serialize($products);

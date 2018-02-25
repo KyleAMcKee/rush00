@@ -16,7 +16,7 @@
             <input type="text" name="email" placeholder="Email">
             <input type="text" name="uid" placeholder="User ID">
             <input type="text" name="pwd" placeholder="Password">
-            <input type="text" name="priv" placeholder="Admin Privileges (1 or 0)">
+            <input type="text" name="priv" placeholder="Admin Privileges (1 or 0)"> <!-- does not work? -->
             <button type="submit" name="submit" value="add">Add</button>
             <button type="submit" name="submit" value="delete">Delete</button>
             <button type="submit" name="submit" value="modify">Modify</button> <!-- does not work? -->

@@ -73,6 +73,21 @@ else if (isset($_GET['action']) && isset($_SESSION['id']))
 <?php
     $items = unserialize(file_get_contents('../data/products'));
     echo '<h1>Product List</h1>';
+    $temp = array("all");
+    echo '<ul class="categories products">'; //products class ->placeholder for temp style, remove later
+    echo '<li><a href="index.php?category=all">all</a></li>';
+    foreach ($items as $key => $value)
+    {
+    	foreach ($value['category'] as $category)
+    	{
+	    	if (array_search($category, $temp) === false)
+	    	{
+	    		$temp[] = $category;
+	    		echo '<li><a href="index.php?category='.$category.'">'.$category.'</a></li>';
+	    	}
+    	}
+	}
+    echo '</ul>';
     echo '<ul class="products">';
     foreach ($items as $key => $value)
     {
