@@ -13,9 +13,10 @@
                 //Display different pages based on user privileges
                 if ($_SESSION['priv'] === true)
                 {
-                    echo '<a href=manageinv.php>Manage Inventory</a>';
-                    echo '<a href=manageusers.php>Manage Users</a>';
-                    print_r($_SESSION);
+                    echo '<a class="admin" href=manageinv.php>Manage Inventory</a>';
+                    echo '<a class="admin" href=manageusers.php>Manage Users</a>';
+                    echo '<a class="admin" href=manageorders.php>Manage Orders</a>';
+                    // print_r($_SESSION);
                 }
                 else
                 {
