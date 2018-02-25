@@ -73,32 +73,12 @@ else if (isset($_GET['action']) && isset($_SESSION['id']))
 
 <?php
     $items = unserialize(file_get_contents('../data/products'));
-    echo '<h1>Product List</h1> 
-    <table> 
-        <tr> 
-            <th>Name</th> 
-            <th>Description</th> 
-            <th>Price</th> 
-            <th>Action</th> 
-        </tr>';
-    foreach($items as $row) {
-        echo('<tr>');
-        echo('<td>');
-        echo($row['name']);
-        echo('</td>');
-        echo('<td>');
-        echo($row['desc']);
-        echo('</td>');
-        echo('<td>');
-        echo($row['price']);
-        echo('</td>');
-        echo('<td>');
-        echo('<a href="index.php?action=add&id=0">Add to cart</a>');
-        echo('</td>');
-        echo('<td>');
-        echo('<a href="index.php?action=delete&id=0">Remove from cart</a>');
-        echo('</td>');
-        echo('</tr>'); 
+    echo '<h1>Product List</h1>';
+    echo '<ul class="products">';
+    foreach ($items as $key => $value)
+    {
+        echo '<li><img src="42.png"><br /><p>'.$value["name"].'</p><br />';
+        echo '<a href="index.php?action=add&id='.$key.'">Add to Cart</a>';
     }
-    echo '</table>'
+    echo '</ul>'; 
 ?>

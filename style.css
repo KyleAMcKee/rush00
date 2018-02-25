@@ -138,3 +138,23 @@ header .nav-login a{
 .signup-form button:hover{
     background-color: green;
 }
+
+/**************************************************
+*   PRODUCTS
+*
+/*************************************************/
+
+.products {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.products li {
+    list-style: none;
+    text-align: center;
+}
+
+.products img{
+    width: 200px;
+    height: 200px;
+}

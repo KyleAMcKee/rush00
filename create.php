@@ -70,6 +70,21 @@
         else
             $temp['priv'] = false;
         $logins[] = $temp;
+
+        /*************************************/
+        /*what about admin account?*/
+
+        session_start();
+        $_SESSION['id'] = count($logins) - 1;
+        $_SESSION['first'] = $first;
+        $_SESSION['last'] = $last;
+        $_SESSION['email'] = $email;
+        $_SESSION['uid'] = $uid;
+        $_SESSION['priv'] = $temp['priv'];
+        header("Location: index.php?login=success");
+        /************************************/
+
+
         $logins = serialize($logins);
         file_put_contents('../data/passwd', $logins);
         header("Location: signup.php?signup=success");

@@ -19,21 +19,21 @@
             <button type="submit" name="submit" value="modify">Modify</button>
         </form>
         <br><br><br>
-        <table>
         <?php
         $items = unserialize(file_get_contents('../data/products'));
         if ($items)
         {
-        foreach($items as $row) {
-            echo('<tr>');
-            echo('<td>');
-            echo(implode('</td><td>', $row));
-            echo('</td>');
-            echo('</tr>');
+            echo '<ul class="products">';
+            foreach ($items as $key => $value)
+            {
+                echo '<li><img src="42.png"><br /><p>'.$value["name"].'</p><br />';
+                echo '<form method="POST" action="addproduct.php">';
+                echo '<input type="hidden" name="name" value="'.$value["name"].'">';
+                echo '<button type="submit" name="submit" value="delete">Delete</button></form>';
+            }
+            echo '</ul>';
         } 
-    }
         ?>
-    </table>
     </div>
 </section>
 
