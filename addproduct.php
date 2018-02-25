@@ -1,6 +1,6 @@
 <?php
 //Check for admin privileges
-if ($_SESSION['priv'] === false)
+if ($_SESSION['priv'] === 'no')
 {
     header("Location: index.php?access=denied");
     exit();

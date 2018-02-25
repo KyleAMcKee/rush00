@@ -11,7 +11,7 @@
                 echo "Hello " . $_SESSION['first'] . ", you are logged in!\n";
                 echo ('<br><br>');
                 //Display different pages based on user privileges
-                if ($_SESSION['priv'] === true)
+                if ($_SESSION['priv'] === 'yes')
                 {
                     echo '<a class="admin" href=manageinv.php>Manage Inventory</a>';
                     echo '<a class="admin" href=manageusers.php>Manage Users</a>';

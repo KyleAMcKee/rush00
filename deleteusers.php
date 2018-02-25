@@ -9,7 +9,7 @@
 			exit();
 
 		}
-		else if ($users[$_POST['uid']]['priv'] === false)
+		else if ($users[$_POST['uid']]['priv'] === 'no')
 			unset($users[$_POST['uid']]);
 		else
 		{

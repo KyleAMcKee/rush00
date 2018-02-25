@@ -1,6 +1,6 @@
 <?php
     include_once('header.php');
-    if ($_SESSION['priv'] === false)
+    if ($_SESSION['priv'] === 'no')
     {
         header("Location: index.php?access=denied");
         exit();

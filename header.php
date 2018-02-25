@@ -7,36 +7,49 @@
     <head>
         <title>Page Title</title>
         <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 <header>
     <nav>
         <div class="nav-wrapper">
-            <ul>
-                <li><a href="index.php">Home</a><li>
-            </ul>
-            <div class="nav-login">
+                <div class="icon-bar">
+                    <a href="index.php"><i class="fa fa-home"></i> Home</a>
+                    <?php 
+                        if (isset($_SESSION['priv'])) 
+                        {
+                            if ($_SESSION['priv'] === 'yes')
+                            {
+                                echo '<a href="manageinv.php"><i class="fa fa-archive"></i> Inventory</a>';
+                                echo '<a href="manageusers.php"><i class="fa fa-user"></i> Users</a>';
+                                echo '<a href="manageorders.php"><i class="fa fa-shopping-cart"></i> Orders</a>';
+                            }
+                            else
+                                echo '<a href="cart.php"><i class="fa fa-shopping-cart"></i> Cart</a>';
+                        }
+                        else
+                            echo '<a href="cart.php"><i class="fa fa-shopping-cart"></i> Cart</a>';
+                    ?>
+                    <!-- <a href="cart.php"><i class="fa fa-user-plus"></i> Sign up</a> -->
+                    <!-- <a style="float:right" href=""><i class="fa fa-sign-out"></i></a>  -->
                 <?php
                     if (isset($_SESSION['uid']))
                     {
                         echo '<form method="POST" action="logout.php">
-                                <button type="submit" name="submit">Logout</button>
+                                <button class="fa fa-sign-out" type="submit" name="submit"> Logout</button>
                             </form>';
                     }
                     else
                     {
-                        echo '<form method="POST" action="login.php">
+                        echo '<a href="signup.php"><i class="fa fa-user-plus"></i> Sign up</a>
+                            <form method="POST" action="login.php">
                                 <input type="text" name="uid" placeholder="Username/email">
                                 <input type="password" name="pwd" placeholder="password">
-                                <button type="submit" name="submit">Login</button>
-                            </form>
-                            <a href="signup.php">Sign up</a>';
-                    }
-                    echo '<form method="POST" action="cart.php">
-                            <button type="submit" name="submit">Cart</button>
+                                <button class="fa fa-sign-in" type="submit" name="submit"> Login</button>
                             </form>';
+                    }
                 ?>
-            </div>
+                </div>
         </div>
     </nav>
 </header>

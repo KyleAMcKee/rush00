@@ -1,6 +1,6 @@
 <?php
     include_once('header.php');
-    if ($_SESSION['priv'] === false)
+    if ($_SESSION['priv'] === 'no')
     {
         header("Location: index.php?access=denied");
         exit();
@@ -10,13 +10,13 @@
 <section class"main-container">
     <div class="main-wrapper">
         <h2>Manange Users</h2>
-        <form class="signup-form" method="POST" action="create.php"> <!-- need to return to manageusers after adding new user or modifying -->
+        <form class="signup-form" method="POST" action="modifyusers.php"> <!-- need to return to manageusers after adding new user or modifying -->
             <input type="text" name="first" placeholder="First Name">
             <input type="text" name="last" placeholder="Last Name">
             <input type="text" name="email" placeholder="Email">
             <input type="text" name="uid" placeholder="User ID">
             <input type="text" name="pwd" placeholder="Password">
-            <input type="text" name="priv" placeholder="Admin Privileges (1 or 0)"> <!-- does not work? -->
+            <input type="text" name="priv" placeholder="Admin Privileges (yes or no)">
             <button type="submit" name="submit" value="add">Add</button>
             <button type="submit" name="submit" value="delete">Delete</button>
             <button type="submit" name="submit" value="modify">Modify</button> <!-- does not work? -->
@@ -41,7 +41,7 @@
         foreach($users as $index => $row) {
             $temp = $row;
             unset($temp['pwd']);
-            $temp['priv'] = ($temp['priv'] === true) ? "yes": "no";
+            $temp['priv'] = ($temp['priv'] === 'yes') ? "yes": "no";
             echo('<tr>');
             echo('<td>');
             echo(implode('</td><td>', $temp));
