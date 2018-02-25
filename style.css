@@ -158,3 +158,19 @@ header .nav-login a{
     width: 200px;
     height: 200px;
 }
+
+/**************************************************
+*   ADMIN
+*
+/*************************************************/
+
+.admin {
+    display: block;
+    text-align: center;
+    background-color: gray;
+    width: 20%;
+    height: 50px;
+    padding-top: 30px;
+    margin: 15px auto;
+    border-radius: 10px;
+}
