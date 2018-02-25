@@ -15,7 +15,6 @@ if (isset($_POST['submit']))
     }
     if ($_POST['submit'] == 'add' || $_POST['submit'] == 'modify')
     {
-        
         if (empty($_POST['price']) || empty($_POST['desc']))
         {
             header("Location: manageinv.php?manageinv=empty");
@@ -39,10 +38,14 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'add')
     //Unserialize products arary
     $products = unserialize(file_get_contents('../data/products'));
     
+    if (!$_POST['image'])
+        $_POST['image'] = "42.png";
     $product = $_POST['name'];
     $price = $_POST['price'];
+    $stock = $_POST['stock'];
     $desc = $_POST['desc'];
-    
+    $url = $_POST['image'];
+
     //Check if product exists in database
     $item_exists = FALSE;
     if ($products)
@@ -64,8 +67,10 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'add')
 
     //Add item to DB
     $temp['name'] = $product;
-    $temp['price'] = $price;  
-    $temp['desc'] = $desc;  
+    $temp['price'] = $price;
+    $temp['stock'] = $stock;
+    $temp['desc'] = $desc;
+    $temp['image'] = $url;     //use getimagesize() to validate it contains an image?
     $products[] = $temp;
     $products = serialize($products);
     file_put_contents('../data/products', $products);
@@ -116,9 +121,14 @@ else if (isset($_POST['submit']) && $_POST['submit'] == 'modify')
     //Unserialize products arary
     $products = unserialize(file_get_contents('../data/products'));
     
+    if (!$_POST['image'])
+        $_POST['image'] = "42.png";
+
     $product = $_POST['name'];
     $price = $_POST['price'];
+    $stock = $_POST['stock'];
     $desc = $_POST['desc'];
+    $url = $_POST['image'];
 
      //Check if product exists in database
      $item_exists = FALSE;
@@ -144,13 +154,18 @@ else if (isset($_POST['submit']) && $_POST['submit'] == 'modify')
     
     //Update item
     $products[$item_found]['price'] = $price;
+    $products[$item_found]['stock'] = $stock;
     $products[$item_found]['desc'] = $desc;
+    $products[$item_found]['image'] = $url;
+
     $products = serialize($products);
     file_put_contents('../data/products', $products);
     header("Location: manageinv.php?manageinv=success");
     exit();
 }
 else
+{
     header("Location: index.php");
     exit();
+}
 ?>
