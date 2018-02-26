@@ -34,7 +34,7 @@ else if (isset($_GET['action']) && isset($_SESSION['id']))
     $temp = array("All");
     echo '<div class="categories">';
     echo '<ul>'; //products class ->placeholder for temp style, remove later
-    echo '<li><a href="index.php?category=All">All</a></li>';
+    echo '<li><a href="index.php?category=All"><i class="fa fa-paw"></i> All</a></li>';
     foreach ($items as $key => $value)
     {
     	foreach ($value['category'] as $category)
@@ -42,7 +42,7 @@ else if (isset($_GET['action']) && isset($_SESSION['id']))
 	    	if (array_search($category, $temp) === false)
 	    	{
 	    		$temp[] = $category;
-	    		echo '<li><a href="index.php?category='.$category.'">'.$category.'</a></li>';
+	    		echo '<li><a href="index.php?category='.$category.'"><i class="fa fa-paw"></i>' . ' ' .$category.'</a></li>';
 	    	}
     	}
 	}
