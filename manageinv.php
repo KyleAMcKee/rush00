@@ -26,14 +26,34 @@
         $items = unserialize(file_get_contents('../data/products'));
         if ($items)
         {
+            echo '<h1>Inventory</h1>';
+            $temp = array("All");
+            echo '<ul class="categories products">'; //products class ->placeholder for temp style, remove later
+            echo '<li><a href="manageinv.php?category=All">All</a></li>';
+            foreach ($items as $key => $value)
+            {
+                foreach ($value['category'] as $category)
+                {
+                    if (array_search($category, $temp) === false)
+                    {
+                        $temp[] = $category;
+                        echo '<li><a href="manageinv.php?category='.$category.'">'.$category.'</a></li>';
+                    }
+                }
+            }
+            echo '</ul>';
+            $category = (!$_GET['category']) ? "All" : $_GET['category'];
             echo '<ul class="products">';
             foreach ($items as $key => $value)
             {
-                echo '<li><img src="'.$value["image"].'"><br /><p>'.$value["name"].'</p><br />';
-                echo '<p>$'.$value["price"].'</p><br />';
-                echo '<form method="POST" action="addproduct.php">';
-                echo '<input type="hidden" name="name" value="'.$value["name"].'">';
-                echo '<button type="submit" name="submit" value="delete">Delete</button></form>';
+                if (array_search($category, $value['category']) !== false)
+                {
+                    echo '<li><img src="'.$value["image"].'"><br /><p>'.$value["name"].'</p><br />';
+                    echo '<p>$'.money_format('%i', $value["price"]).'</p><br />';
+                    echo '<form method="POST" action="addproduct.php">';
+                    echo '<input type="hidden" name="name" value="'.$value["name"].'">';
+                    echo '<button type="submit" name="submit" value="delete">Delete</button></form>';
+                }
             }
             echo '</ul>';
         } 

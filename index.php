@@ -16,7 +16,6 @@
                     echo '<a class="admin" href=manageinv.php>Manage Inventory</a>';
                     echo '<a class="admin" href=manageusers.php>Manage Users</a>';
                     echo '<a class="admin" href=manageorders.php>Manage Orders</a>';
-                    // print_r($_SESSION);
                 }
                 else
                 {

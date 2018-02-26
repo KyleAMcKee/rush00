@@ -40,14 +40,16 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'add')
     
     if (!$_POST['image'])
         $_POST['image'] = "42.png";
-    if (!$_POST['category'])
-    	$_POST['category'] = "all";
     $product = $_POST['name'];
     $price = $_POST['price'];
     $stock = $_POST['stock'];
     $desc = $_POST['desc'];
     $category = trim(preg_replace("/[ ,]+/", ",", $_POST['category']));
     $category = explode(",", $category);
+    foreach ($category as $index => $elem)
+        $category[$index] = ucfirst($elem);
+    if (array_search("All", $category) === false)
+        $category[] = "All";
     $url = $_POST['image'];
 
     //Check if product exists in database
@@ -57,8 +59,7 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'add')
         foreach($products as $key => $value)
         {
             if ($value['name'] === $product)
-                $item_exists = TRUE;
-                
+                $item_exists = TRUE;    
         }
     }
     
@@ -128,15 +129,16 @@ else if (isset($_POST['submit']) && $_POST['submit'] == 'modify')
     
     if (!$_POST['image'])
         $_POST['image'] = "42.png";
-    if (!$_POST['category'])
-    	$_POST['category'] = "all";
-
     $product = $_POST['name'];
     $price = $_POST['price'];
     $stock = $_POST['stock'];
     $desc = $_POST['desc'];
     $category = trim(preg_replace("/[ ,]+/", ",", $_POST['category']));
     $category = explode(",", $category);
+    foreach ($category as $elem)
+        $category[$index] = ucfirst($elem);
+    if (array_search("All", $category) === false)
+        $category[] = "All";
     $url = $_POST['image'];
 
      //Check if product exists in database

@@ -20,7 +20,7 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'add')
     $email = $_POST['email'];
     $uid = $_POST['uid'];
     $pwd = $_POST['pwd'];
-    $priv = $_POST['priv'];
+    $priv = (strtolower($_POST['priv']) === "yes") ? "yes" : "no";
 
     //Check for empty input
     if (empty($first) || empty($last) || empty($email) || empty($uid) || empty($pwd))

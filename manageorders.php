@@ -14,20 +14,34 @@
         <table class="orders">
         <?php
         $users = unserialize(file_get_contents('../data/passwd'));
+        $items= unserialize(file_get_contents('../data/products'));
+        $orders = unserialize(file_get_contents('../data/orders'));
 
+        $guest = array("first" => "guest", "last" => "guest", "email" => "none", "uid" => "guest");
+  
         echo '<tr><td>First Name</td><td>Last Name</td><td>Email</td><td>Username</td><td>Order Total</td></tr>';
-        foreach($users as $index => $row) {
-        	if ($row['priv'] === false) //also only if user placed an order (save orders in a folder?)
-	        {
-			  	$temp = $row;
-	            unset($temp['pwd']);
-	            // $temp['priv'] = ($temp['priv'] === true) ? "yes": "no"
-	            echo('<tr>');
-	            echo('<td>');
-	            echo(implode('</td><td>', $temp));
-	            echo('</td>');
-	            echo('</tr>');
-	        }
+        foreach($orders as $index => $row) {
+            $totalCost = 0;
+            if ($row[0] == "guest")
+                $temp = $guest;
+            else
+            {
+                foreach ($users as $i => $account)
+                {
+                    if ($account['uid'] == $row[0])
+                        $temp = $account;
+                }
+                $temp = array_slice($temp, 0, 4);
+            }
+            //calculate total cost
+            foreach ($row[1] as $id => $quantity)
+                $totalCost += $items[$id]['price'];
+            echo('<tr>');
+            echo('<td>');
+            echo(implode('</td><td>', $temp));
+            echo('</td><td>$'.money_format('%i', $totalCost));
+            echo('</td>');
+            echo('</tr>');
         }
         ?>
     </table>
