@@ -28,8 +28,9 @@
         {
             echo '<h1>Inventory</h1>';
             $temp = array("All");
-            echo '<ul class="categories products">'; //products class ->placeholder for temp style, remove later
-            echo '<li><a href="manageinv.php?category=All">All</a></li>';
+            echo '<div class="categories">';
+            echo '<ul>'; //products class ->placeholder for temp style, remove later
+            echo '<li><a href="manageinv.php?category=All"><i class="fa fa-paw"></i> All</a></li>';
             foreach ($items as $key => $value)
             {
                 foreach ($value['category'] as $category)
@@ -37,11 +38,12 @@
                     if (array_search($category, $temp) === false)
                     {
                         $temp[] = $category;
-                        echo '<li><a href="manageinv.php?category='.$category.'">'.$category.'</a></li>';
+                        echo '<li><a href="manageinv.php?category='.$category.'"><i class="fa fa-paw"></i>' . ' ' .$category.'</a></li>';
                     }
                 }
             }
             echo '</ul>';
+            echo '</div>';
             $category = (!$_GET['category']) ? "All" : $_GET['category'];
             echo '<ul class="products">';
             foreach ($items as $key => $value)
