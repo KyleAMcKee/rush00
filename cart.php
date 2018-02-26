@@ -14,9 +14,6 @@
         }
         if ($in_cart == TRUE)
         {
-
-            print_r($_SESSION['cart']);
-
             if (isset($_GET['action']) && isset($_GET['id']) && isset($_SESSION['cart'][$_GET['id']]))
             {
                 if ($_GET['action'] == "delete")
