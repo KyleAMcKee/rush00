@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Page Title</title>
+        <title>Pet shop</title>
         <link rel="stylesheet" type="text/css" href="style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -30,8 +30,6 @@
                         else
                             echo '<a href="cart.php"><i class="fa fa-shopping-cart"></i> Cart</a>';
                     ?>
-                    <!-- <a href="cart.php"><i class="fa fa-user-plus"></i> Sign up</a> -->
-                    <!-- <a style="float:right" href=""><i class="fa fa-sign-out"></i></a>  -->
                 <?php
                     if (isset($_SESSION['uid']))
                     {
@@ -51,5 +49,17 @@
                 ?>
                 </div>
         </div>
+    </nav>
+    <nav>
+        <div class="status">
+            <?php
+            if(isset($_SESSION['uid']))
+            {
+                echo '<div class="status-space">Logged in as: ' . $_SESSION['first'] . '<div>';
+            }
+            else
+                echo '<div class="status-space">Not logged in</div>';
+            ?>
+        </div>           
     </nav>
 </header>

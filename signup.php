@@ -4,7 +4,6 @@
 
 <section class"main-container">
     <div class="main-wrapper">
-        <h2>Signup</h2>
         <form class="signup-form" method="POST" action="create.php"> 
             <input type="text" name="first" placeholder="First name">
             <input type="text" name="last" placeholder="Last name">

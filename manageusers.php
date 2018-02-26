@@ -26,16 +26,16 @@
         <?php
         $users = unserialize(file_get_contents('../data/passwd'));
 
-        echo '<tr><td>First Name</td><td>Last Name</td><td>Email</td><td>Username</td><td>Administrator?</td></tr>';
+        echo '<th>First Name</th><th>Last Name</th><th>Email</th><th>Username</th><th>Administrator?</th><th>Action</th>';
         foreach($users as $index => $row) {
             $temp = $row;
             unset($temp['pwd']);
             echo('<tr>');
             echo('<td>');
             echo(implode('</td><td>', $temp));
-            echo('<form method="POST" action="deleteusers.php">');
+            echo('<td><form method="POST" action="deleteusers.php">');
             echo('<input type="hidden" name="uid" value="'.$index.'">');
-            echo('<button type="submit" name="submit" value="delete">Delete</button></form>');
+            echo('<button type="submit" name="submit" value="delete">Delete</button></form></td>');
             echo('</td>');
             echo('</tr>');
         }

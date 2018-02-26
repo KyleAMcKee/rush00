@@ -38,10 +38,12 @@
             echo '<a href="orders.php?action=order">Place Order</a>';
         }
         else
-            echo "<h1>There is nothing in your cart\n</h1>";
+            echo "<h1>There is nothing in your cart</h1>";
     }
+    else if (isset($_GET['cartorder']) && $_GET['cartorder'])
+        echo "<h1>Your order has been placed!</h1>";
     else
-        echo "<h1>There is nothing in your cart\n</h1>";
+        echo "<h1>There is nothing in your cart</h1>";
 
         include_once('footer.php');
 ?>

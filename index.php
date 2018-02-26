@@ -4,11 +4,9 @@
 
 <section class"main-container">
     <div class="main-wrapper">
-        <h2>Home</h2>
         <?php
             if (isset($_SESSION['uid']))
             {
-                echo "Hello " . $_SESSION['first'] . ", you are logged in!\n";
                 echo ('<br><br>');
                 //Display different pages based on user privileges
                 if ($_SESSION['priv'] === 'yes')
