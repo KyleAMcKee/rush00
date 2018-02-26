@@ -39,7 +39,7 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'add')
     $products = unserialize(file_get_contents('../data/products'));
     
     if (!$_POST['image'])
-        $_POST['image'] = "42.png";
+        $_POST['image'] = "stockimg.png";
     $product = $_POST['name'];
     $price = $_POST['price'];
     $stock = $_POST['stock'];
@@ -128,7 +128,7 @@ else if (isset($_POST['submit']) && $_POST['submit'] == 'modify')
     $products = unserialize(file_get_contents('../data/products'));
     
     if (!$_POST['image'])
-        $_POST['image'] = "42.png";
+        $_POST['image'] = "stockimg.png";
     $product = $_POST['name'];
     $price = $_POST['price'];
     $stock = $_POST['stock'];
