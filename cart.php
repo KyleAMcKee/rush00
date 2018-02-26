@@ -14,9 +14,6 @@
         }
         if ($in_cart == TRUE)
         {
-
-            print_r($_SESSION['cart']);
-
             if (isset($_GET['action']) && isset($_GET['id']) && isset($_SESSION['cart'][$_GET['id']]))
             {
                 if ($_GET['action'] == "delete")
@@ -31,14 +28,17 @@
             foreach ($_SESSION['cart'] as $key => $quantity)
             {
                 $totalCost += $items[$key]['price'] * $quantity;
-                echo '<li><img src="'.$items[$key]["image"].'"><br /><p>'.$items[$key]["name"].'</p><br />';
-                echo '<p>$'.money_format('%i', $items[$key]["price"]).'</p><br />';
-                echo '<p>Quantity '.$quantity.'</p><br />';
-                echo '<a href="cart.php?action=delete&id='.$key.'">Remove From Cart</a>';
+                echo '<li><img src="'.$items[$key]["image"].'"><br /><p class="name">'.$items[$key]["name"].'</p>';
+                echo '<p class="desc">'.ucwords($items[$key]["desc"]).'</p>';
+                echo '<p class="price">$'.money_format('%i', $items[$key]["price"]).'</p>';
+                echo '<p class="quantity">Quantity: '.$quantity.'</p>';
+                echo '<a class="removeItem" href="cart.php?action=delete&id='.$key.'">Remove From Cart</a>';
             }
             echo '</ul>';
-            echo '<p>Order Total: $'.money_format('%i', $totalCost).'</p>';
-            echo '<a href="orders.php?action=order">Place Order</a>';
+            echo '<div class="cart">';
+            echo '<p class="orderTotal">Order Total: $'.money_format('%i', $totalCost).'</p>';
+            echo '<a class="placeOrder" href="orders.php?action=order">Place Order</a>';
+            echo '</div>';
         }
         else
             echo "<h1>There is nothing in your cart</h1>";

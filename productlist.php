@@ -33,7 +33,7 @@ else if (isset($_GET['action']) && isset($_SESSION['id']))
     echo '<h1>Product List</h1>';
     $temp = array("All");
     echo '<div class="categories">';
-    echo '<ul>'; //products class ->placeholder for temp style, remove later
+    echo '<ul>';
     echo '<li><a href="index.php?category=All"><i class="fa fa-paw"></i> All</a></li>';
     foreach ($items as $key => $value)
     {
@@ -54,10 +54,10 @@ else if (isset($_GET['action']) && isset($_SESSION['id']))
     {
         if (array_search($category, $value['category']) !== false)
         {
-            echo '<li><img src="'.$value["image"].'"><br /><p>'.$value["name"].'</p><br />';
-            echo '<p>'.ucwords($value["desc"]).'</p><br />';
-            echo '<p>$'.money_format('%i', $value["price"]).'</p><br />';
-            echo '<a href="index.php?action=add&id='.$key.'">Add to Cart</a>';
+            echo '<li><img src="'.$value["image"].'"><br /><p class="name">'.ucwords($value["name"]).'</p>';
+            echo '<p class="desc">'.ucwords($value["desc"]).'</p>';
+            echo '<p class="price">$'.money_format('%i', $value["price"]).'</p>';
+            echo '<a class="addItem" href="index.php?action=add&id='.$key.'">Add to Cart</a></li>';
         }
     }
     echo '</ul>'; 

@@ -151,7 +151,7 @@ ul {
 }
 
 /**************************************************
-*   PRODUCTS / CATEGORIES
+*   PRODUCTS / CATEGORIES / CART
 *
 /*************************************************/
 
@@ -190,11 +190,56 @@ ul {
 .products li {
     list-style: none;
     text-align: center;
+    margin: 20px;
 }
 
 .products img{
     width: 200px;
     height: 200px;
+}
+
+.products img:hover {
+    transform: scale(1.2);
+}
+
+.products p {
+    margin: 5px auto;
+}
+
+.products .name {
+    font-size: 20px;
+    font-family: 'Krona One', sans-serif;
+}
+
+.addItem, .removeItem {
+    padding: 3px;
+    background-color: #D4C26A;
+    color: #fff;
+    border-radius: 2px;
+    box-shadow: 0px 17px 10px -10px rgba(0,0,0,0.4);
+    cursor: pointer;
+}
+
+.addItem:active, .removeItem:hover {
+     background-color: #806D15;
+}
+
+.cart {
+    text-align: center;
+}
+
+.placeOrder {
+    border-radius: 10px;
+    font-size: 30px;
+    padding: 8px;
+    color: #fff;
+    background-color: #152C55;
+    box-shadow: 0px 17px 10px -10px rgba(0,0,0,0.4);
+    cursor: pointer;
+}
+
+.placeOrder:hover {
+    background-color: #4D658D;
 }
 
 /**************************************************
