@@ -32,7 +32,8 @@ else if (isset($_GET['action']) && isset($_SESSION['id']))
     $items = unserialize(file_get_contents('../data/products'));
     echo '<h1>Product List</h1>';
     $temp = array("All");
-    echo '<ul class="categories products">'; //products class ->placeholder for temp style, remove later
+    echo '<div class="categories">';
+    echo '<ul>'; //products class ->placeholder for temp style, remove later
     echo '<li><a href="index.php?category=All">All</a></li>';
     foreach ($items as $key => $value)
     {
@@ -46,6 +47,7 @@ else if (isset($_GET['action']) && isset($_SESSION['id']))
     	}
 	}
     echo '</ul>';
+    echo '</div>';
     $category = (!$_GET['category']) ? "All" : $_GET['category'];
     echo '<ul class="products">';
     foreach ($items as $key => $value)

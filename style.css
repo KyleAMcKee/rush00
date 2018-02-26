@@ -27,6 +27,10 @@ th, td {
     border-bottom: 1px solid gray;
 }
 
+ul {
+    list-style-type: none;
+}
+
 /**************************************************
 *  HEADER
 *
@@ -147,10 +151,37 @@ th, td {
 }
 
 /**************************************************
-*   PRODUCTS
+*   PRODUCTS / CATEGORIES
 *
 /*************************************************/
 
+.categories {
+    text-decoration: none;
+    float: left;
+    border-radius: 15px;
+    background-color: #555;
+}
+.categories ul {
+    padding: 0;
+    margin: 0;
+}
+.categories ul li {
+    list-style: none;
+    display: inline;
+    text-align: left;
+    /* padding: 5px; */
+}
+.categories ul li a {
+    width:250px;
+    height:50px;
+    display:block;
+    color: white; 
+    font-size: 28px;
+    padding-left: 10px;
+}
+.categories a:hover {
+    background-color: #000;
+}
 .products {
     display: flex;
     flex-wrap: wrap;
