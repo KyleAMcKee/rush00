@@ -22,21 +22,21 @@
         //Check for empty input
         if (empty($first) || empty($last) || empty($email) || empty($uid) || empty($pwd))
         {
-            header("Location: manageusers.php?signup=empty");
+            header("Location: signup.php?signup=empty");
             exit();
         }
             
         //Check input characters are valid
         if (!preg_match("/^[a-zA-Z]*$/", $first) || !preg_match("/^[a-zA-Z]*$/", $last))
         {
-            header("Location: manageusers.php?signup=invalidname");
+            header("Location: signup.php?signup=invalidname");
             exit();
         }
 
         //Check for valid email
         if (!filter_var($email, FILTER_VALIDATE_EMAIL))
         {
-            header("Location: manageusers.php?signup=invalidemail");
+            header("Location: signup.php?signup=invalidemail");
             exit();
         }
 
@@ -52,7 +52,7 @@
         }
         if ($account_exists === TRUE)
         {
-            header("Location: manageusers.php?signup=uidexists");
+            header("Location: signup.php?signup=uidexists");
             exit();
         }
 
