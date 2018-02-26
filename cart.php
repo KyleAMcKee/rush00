@@ -14,6 +14,9 @@
         }
         if ($in_cart == TRUE)
         {
+
+            print_r($_SESSION['cart']);
+
             if (isset($_GET['action']) && isset($_GET['id']) && isset($_SESSION['cart'][$_GET['id']]))
             {
                 if ($_GET['action'] == "delete")
@@ -27,7 +30,7 @@
             echo '<ul class="products">';
             foreach ($_SESSION['cart'] as $key => $quantity)
             {
-                $totalCost += $items[$key]['price'];
+                $totalCost += $items[$key]['price'] * $quantity;
                 echo '<li><img src="'.$items[$key]["image"].'"><br /><p>'.$items[$key]["name"].'</p><br />';
                 echo '<p>$'.money_format('%i', $items[$key]["price"]).'</p><br />';
                 echo '<p>Quantity '.$quantity.'</p><br />';
