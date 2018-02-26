@@ -44,7 +44,10 @@
             }
             echo '</ul>';
             echo '</div>';
-            $category = (!$_GET['category']) ? "All" : $_GET['category'];
+            if (isset($_GET['category']))
+            {
+                $category = (!$_GET['category']) ? "All" : $_GET['category'];
+            }
             echo '<ul class="products">';
             foreach ($items as $key => $value)
             {

@@ -21,7 +21,7 @@ session_start();
         {
             foreach($logins as $key => $value)
             {
-                if ($value['uid'] === $uid || $value['email'] === $email)
+                if ($value['uid'] === $uid || $value['email'] === $uid)
                 {
                     $account_exists = TRUE;
                     $account = $key;
@@ -66,7 +66,7 @@ session_start();
             }
             else
             {
-                //if (isset($_SESSION['cart']))
+                if (isset($_SESSION['cart']))
                     $cart[]= $_SESSION['cart'];
             }
             $_SESSION['file'] = $file;

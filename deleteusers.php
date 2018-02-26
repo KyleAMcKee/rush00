@@ -18,7 +18,7 @@
 		}
         $users = serialize($users);
         file_put_contents('../data/passwd', $users);
-        header("Location: manageusers.php?manageusers=userdeleted>");
+        header("Location: manageusers.php?manageusers=userdeleted");
         exit();
 	}
     else

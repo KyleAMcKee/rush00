@@ -48,7 +48,10 @@ else if (isset($_GET['action']) && isset($_SESSION['id']))
 	}
     echo '</ul>';
     echo '</div>';
+    if (isset($_GET['category']))
+    {
     $category = (!$_GET['category']) ? "All" : $_GET['category'];
+    }
     echo '<ul class="products">';
     foreach ($items as $key => $value)
     {
